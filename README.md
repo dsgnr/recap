@@ -20,7 +20,7 @@ Contribution guidelines can be found in [CONTRIBUTING.md](https://github.com/rac
 - grep
 - iotop
 - iproute/iproute2
-- elinks
+- lynx
 - procps
 - psmisc
 - sysstat >= 9

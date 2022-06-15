@@ -37,9 +37,9 @@ print_http_status() {
   local http_status_url=${PLUGIN_OPTS_HTTP_STATUS_URL:-${default_url}}
 
   # Check if html dump tool is available
-  http_tool=$( type -p elinks )
+  http_tool=$( type -p lynx )
   if [[ -z ${http_tool} ]]; then
-    echo "elinks is not installed" >> "${LOGFILE}"
+    echo "lynx is not installed" >> "${LOGFILE}"
     log INFO "Ended '${plugin_name}' report"
     return
   fi

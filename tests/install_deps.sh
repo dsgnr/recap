@@ -8,7 +8,7 @@ packages=(
           "gawk"
           "grep"
           "iotop"
-          "elinks"
+          "lynx"
           "make"
           "procps"
           "psmisc"
