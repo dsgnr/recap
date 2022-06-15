@@ -20,7 +20,7 @@ Contribution guidelines can be found in [CONTRIBUTING.md](.github/CONTRIBUTING.m
 - grep
 - iotop
 - iproute/iproute2
-- elinks
+- elinks (or lynx on RHEL)
 - procps
 - psmisc
 - sysstat >= 9

@@ -5,7 +5,6 @@ extra_args=""
 
 packages=(
           "iotop"
-          "elinks"
           "make"
           "sysstat"
           )
@@ -16,13 +15,23 @@ case ${DISTRO} in
                "procps-ng"
                "psmisc"
                "iproute"
+               "elinks"
     )
     dnf install --assumeyes ${packages[@]} || exit $?
     ;;
+  rhel*)
+    packages+=(
+               "psmisc"
+               "iproute"
+               "lynx"
+    )
+    dnf install --assumeyes ${packages[@]} || exit $?
+  )
   centos*)
     packages+=(
                "psmisc"
                "iproute"
+               "elinks"
     )
     version=$(grep -Po "[0-9]+" <<<${DISTRO/*:/})
     if [[ ${version} -ge 8 ]]; then
@@ -39,6 +48,7 @@ case ${DISTRO} in
                "procps"
                "psmisc"
                "iproute2"
+               "elinks"
     )
     apt-get update
     apt-get install ${packages[@]} -y || exit $?

@@ -22,6 +22,8 @@
 print_http_status() {
   local LOGFILE="$1"
   local plugin_name=${FUNCNAME[0]/print_/}
+  local dist=$(. /etc/os-release; echo $ID)
+
   log INFO "Starting '${plugin_name}' report - ${LOGFILE##*/}"
   ##
   # Default settings:
@@ -36,9 +38,14 @@ print_http_status() {
   local http_status_url=${PLUGIN_OPTS_HTTP_STATUS_URL:-${default_url}}
 
   # Check if html dump tool is available
-  http_tool=$( type -p elinks )
+  if [[ "$dist" == "rhel" ]]; then
+      dump_tool="lynx"
+  else
+      dump_tool="elinks"
+  fi
+  http_tool=$( type -p $dump_tool )
   if [[ -z ${http_tool} ]]; then
-    echo "elinks is not installed" >> "${LOGFILE}"
+    echo "$dump_tool is not installed" >> "${LOGFILE}"
     log INFO "Ended '${plugin_name}' report"
     return
   fi
